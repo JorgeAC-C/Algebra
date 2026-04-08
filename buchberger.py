@@ -227,16 +227,19 @@ def poly_str(p, variables):
 # ─────────────────────────────────────────
 
 if __name__ == "__main__":
-    # Variables: x, y
-    # Polinomios: f1 = x^2 + y,  f2 = x*y - 1
-    # Representacion: {(exp_x, exp_y): coeficiente}
+    # Variables: x, y, z
+    # f1 = x^2 + y^2 + z^2 - 1
+    # f2 = x^2 + z^2 - y
+    # f3 = x - z
+    # Representacion: {(exp_x, exp_y, exp_z): coeficiente}
 
-    variables = ['x', 'y']
+    variables = ['x', 'y', 'z']
 
-    f1 = {(2,0): 1, (0,1): 1}        # x^2 + y
-    f2 = {(1,1): 1, (0,0): -1}       # xy - 1
+    f1 = {(2,0,0): 1, (0,2,0): 1, (0,0,2): 1, (0,0,0): -1}  # x^2 + y^2 + z^2 - 1
+    f2 = {(2,0,0): 1, (0,0,2): 1, (0,1,0): -1}               # x^2 + z^2 - y
+    f3 = {(1,0,0): 1, (0,0,1): -1}                            # x - z
 
-    generadores = [f1, f2]
+    generadores = [f1, f2, f3]
 
     print("Generadores:")
     for f in generadores:
